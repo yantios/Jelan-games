@@ -1,4 +1,4 @@
-const API='https://api.jerexd.my.id/api/game/',KEY='dNskiVpe4-RiHarV';
+const API='/api/game?g=';
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const norm=s=>String(s).toLowerCase().normalize('NFD').replace(/[^a-z0-9]/g,'');
 /* suara: dibuat langsung dengan WebAudio, tanpa file */
@@ -50,7 +50,7 @@ async function load(){
 const st=$('#stage');st.innerHTML='<div class="load">Memuat soal…</div>';
 const id=S.g.id;
 try{
-const r=await fetch(`${API}${id}?apikey=${KEY}`);
+const r=await fetch(API+id);
 if(!r.ok)throw 0;const j=await r.json();
 if(S.g.id!==id||!j.result)throw 0;
 S.raw=S.g.n(j.result);
